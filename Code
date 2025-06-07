@@ -23,8 +23,8 @@
     }
     #heart {
       position: absolute;
-      top: 0;
-      right: -40px;
+      top: -20px;
+      right: -20px;
       width: 40px;
       height: 40px;
       display: none;
@@ -63,19 +63,23 @@
 
     let timeoutId;
 
-    koala.addEventListener('click', () => {
+    function clearDisplay() {
       clearTimeout(timeoutId);
+      message.textContent = '';
       heart.style.display = 'none';
+    }
+
+    koala.addEventListener('click', () => {
+      clearDisplay();
       message.textContent = 'Hello World, I am Koala.';
-      timeoutId = setTimeout(() => {
-        message.textContent = '';
-      }, 3000);
+      timeoutId = setTimeout(clearDisplay, 3000);
     });
 
     hiButton.addEventListener('click', () => {
-      clearTimeout(timeoutId);
+      clearDisplay();
       message.textContent = 'HI Koala :D';
       heart.style.display = 'block';
+      timeoutId = setTimeout(clearDisplay, 3000);
     });
   </script>
 </body>
