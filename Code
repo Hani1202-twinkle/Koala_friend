@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Koala Interaction</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    #message {
+      margin: 20px 0;
+      font-size: 1.5rem;
+      color: #333;
+      height: 2em;
+    }
+    #koala-container {
+      display: inline-block;
+      position: relative;
+      cursor: pointer;
+    }
+    #heart {
+      position: absolute;
+      top: 0;
+      right: -40px;
+      width: 40px;
+      height: 40px;
+      display: none;
+    }
+    button {
+      margin-top: 30px;
+      padding: 10px 20px;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="koala-container">
+    <img
+      id="koala"
+      src="https://static.vecteezy.com/system/resources/thumbnails/024/704/873/small_2x/koala-with-ai-generated-free-png.png"
+      alt="Koala"
+      width="150"
+      height="150"
+    />
+    <img
+      id="heart"
+      src="https://www.pngarts.com/files/1/Heart-PNG-Photo.png"
+      alt="Heart"
+    />
+  </div>
+  <div id="message"></div>
+  <button id="hiButton">Say Hi to Koala</button>
+
+  <script>
+    const koala = document.getElementById('koala');
+    const message = document.getElementById('message');
+    const hiButton = document.getElementById('hiButton');
+    const heart = document.getElementById('heart');
+
+    let timeoutId;
+
+    koala.addEventListener('click', () => {
+      clearTimeout(timeoutId);
+      heart.style.display = 'none';
+      message.textContent = 'Hello World, I am Koala.';
+      timeoutId = setTimeout(() => {
+        message.textContent = '';
+      }, 3000);
+    });
+
+    hiButton.addEventListener('click', () => {
+      clearTimeout(timeoutId);
+      message.textContent = 'HI Koala :D';
+      heart.style.display = 'block';
+    });
+  </script>
+</body>
+</html>
